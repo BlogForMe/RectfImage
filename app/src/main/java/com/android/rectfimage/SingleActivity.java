@@ -12,5 +12,6 @@ public class SingleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_single);
         setContentView(new XfermodeView(this));
+        System.out.println("你好");
     }
 }
