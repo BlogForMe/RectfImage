@@ -4,12 +4,20 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.ImageFormat;
+import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
+import android.graphics.Xfermode;
+import android.service.carrier.CarrierMessagingService;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.inputmethod.CursorAnchorInfo;
 
 import com.android.rectfimage.R;
+import com.android.rectfimage.Xfermodes;
 
 /**
  * Created by Administrator on 2016/8/28.
@@ -52,7 +60,7 @@ public class CustomImageView extends View {
                     mSrc = BitmapFactory.decodeResource(getResources(), a.getResourceId(attr, 0));
                     break;
                 case R.styleable.CustomImageView_type:
-                    type = a.getInt(attr, 0);
+                    type = a.getInt(attr, 0);//默认为Circle
                     break;
                 case R.styleable.CustomImageView_borderRadius:
                     mRadius = a.getDimensionPixelOffset(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10f, getResources().getDisplayMetrics()));
@@ -112,5 +120,69 @@ public class CustomImageView extends View {
                 mHeight = desire;
         }
         setMeasuredDimension(mWidth, mHeight);
+    }
+
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        switch (type) {
+            case TYPE_CIRCLE: //绘制圆形
+                int min = Math.min(mWidth, mHeight);
+                /**
+                 * 长度如果不一致，按小的值进行压缩
+                 */
+                mSrc = Bitmap.createScaledBitmap(mSrc, min, min, false);
+                canvas.drawBitmap(createCircleImage(mSrc, min), 0, 0, null);
+                break;
+            case TYPE_ROUND:
+                canvas.drawBitmap(createRoundConerImage(mSrc), 0, 0, null);
+                break;
+        }
+    }
+
+    /**
+     * 根据原图添加圆角
+     *
+     * @param source
+     * @return
+     */
+    private Bitmap createRoundConerImage(Bitmap source) {
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        Bitmap target = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(target);
+        RectF rectF = new RectF(0, 0, source.getWidth(), source.getHeight());
+        canvas.drawRoundRect(rectF, mRadius, mRadius, paint);
+        paint.setXfermode(Xfermodes.sModes[5]);
+        canvas.drawBitmap(source, 0, 0, paint);
+        return target;
+    }
+
+
+    /**
+     * 根据原图绘制圆形图片
+     *
+     * @param source
+     * @param min
+     * @return
+     */
+    private Bitmap createCircleImage(Bitmap source, int min) {
+        final Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        Bitmap target = Bitmap.createBitmap(min, min, Bitmap.Config.ARGB_8888);
+        /**
+         * 产生一个同样大小的画布
+         */
+        Canvas canvas = new Canvas(target);
+
+        //绘制圆
+        canvas.drawCircle(min / 2, min / 2, min / 2, paint);
+        // 6.PorterDuff.Mode.SRC_IN
+        paint.setXfermode(Xfermodes.sModes[5]);
+
+        //再绘制图片
+        canvas.drawBitmap(source, 0, 0, paint);
+        return target;
     }
 }

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/tv_translate"
-        android:text="测算位移" />
+        android:text="画图" />
 
     <Button
         android:id="@+id/tv_single"
