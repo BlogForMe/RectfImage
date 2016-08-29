@@ -12,4 +12,9 @@
         <attr name="type" />
         <attr name="src" />
     </declare-styleable>
+
+    <declare-styleable name="RoundImageViewByXfermode">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
 </resources>

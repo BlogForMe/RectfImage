@@ -9,19 +9,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <com.android.rectfimage.view.CustomImageView
+  <!--  <com.android.rectfimage.view.CustomImageView
         android:id="@+id/img_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         zh:src="@mipmap/girl13"
         zh:type="circle" />
 
     <com.android.rectfimage.view.CustomImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_1"
-        zh:borderRadius="10dp"
+        android:layout_toRightOf="@id/img_1"
+        zh:borderRadius="30dp"
         zh:src="@mipmap/icon"
+        zh:type="round" />-->
+
+    <com.android.rectfimage.view.RoundImageViewByXfermode
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/aa"
+        android:layout_margin="10dp"
+        zh:borderRadius="10dp"
         zh:type="round" />
 
 </RelativeLayout>
