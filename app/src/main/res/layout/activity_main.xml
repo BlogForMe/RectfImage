@@ -1,50 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.android.rectfimage.MainActivity">
 
-    <Button
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点我进图" />
-
-    <Button
-        android:id="@+id/tv_translate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/tv"
-        android:text="translate" />
-
-    <Button
-        android:id="@+id/tv_circleRect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/tv_translate"
-        android:text="画图" />
-
-    <Button
-        android:id="@+id/tv_single"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/tv_circleRect"
-        android:text="单个测试" />
-
-    <com.android.rectfimage.view.DrawView
-        android:id="@+id/drawView"
+ <fragment
+        android:id="@+id/girl"
+        android:name="com.android.rectfimage.fragment.GirlFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp" />
+        android:layout_height="wrap_content" />
 
-
-</RelativeLayout>
+    <fragment
+        android:id="@+id/line"
+        android:name="com.android.rectfimage.fragment.Line_Fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
