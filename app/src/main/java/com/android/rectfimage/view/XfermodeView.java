@@ -2,20 +2,14 @@ package com.android.rectfimage.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.graphics.Xfermode;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
-import com.android.rectfimage.R;
-import com.android.rectfimage.Xfermodes;
+
 
 
 /**
@@ -57,6 +51,8 @@ public class XfermodeView extends View {
 
     // create a bitmap with a circle, used for the "dst" image  画一个圆
     static Bitmap makeDst(int w, int h) {
+
+
         Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bm);
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -83,15 +79,16 @@ public class XfermodeView extends View {
         super.onDraw(canvas);
         int w = width, h = height;
 //        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.aa);
-        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+//        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 
 
-
-        Canvas c = new Canvas(bm);
-        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-        p.setColor(0xFF66AAFF);
-        c.drawRect(w / 3, h / 3, w * 19 / 20, h * 19 / 20, p);
+//        Bitmap bn = BitmapFactory.decodeResource(context.getResources(), R.mipmap.mountain);
+//        Bitmap bm = Bitmap.createBitmap(bn);
+//        Canvas c = new Canvas(bm);
+//        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+//
+//        p.setColor(0xFF66AAFF);
+//        c.drawRect(w / 3, h / 3, w * 19 / 20, h * 19 / 20, p);
 
 
         //创建原图和目标图
@@ -118,11 +115,9 @@ public class XfermodeView extends View {
         //设置Paint的Xfermode
 //        paint.setXfermode(Xfermodes.sModes[4]);  //这里修改显示模式
 
-        Bitmap bn = BitmapFactory.decodeResource(context.getResources(), R.mipmap.aa);
-
 
         //绘制矩形
-        canvas.drawBitmap(bn, screenW / 4, screenH / 3, p);
+//        canvas.drawBitmap(bn, screenW / 4, screenH / 3, p);
 
 //        paint.setXfermode(null);
 //         还原画布
