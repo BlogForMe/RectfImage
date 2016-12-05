@@ -18,7 +18,7 @@ public class CircleRectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_circle_rect);
         llIv = (LinearLayout) findViewById(R.id.ll_iv);
 
-//        initView();
+        initView();
     }
 
     private void initView() {

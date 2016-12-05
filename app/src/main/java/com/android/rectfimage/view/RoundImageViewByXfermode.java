@@ -16,7 +16,6 @@ import android.util.TypedValue;
 import android.widget.ImageView;
 
 import com.android.rectfimage.R;
-import com.android.rectfimage.Xfermodes;
 
 import java.lang.ref.WeakReference;
 
@@ -24,14 +23,8 @@ import java.lang.ref.WeakReference;
  * Created by Administrator on 2016/8/29.
  */
 public class RoundImageViewByXfermode extends ImageView {
-    private int mBorderRadius; //圆角的大小
+    private int mBorderRadius = 20; //圆角的大小
     private Paint mPaint;
-    /**
-     * 图片的类型，圆形or圆角
-     */
-    private int type;
-    public static final int TYPE_CIRCLE = 0;
-    public static final int TYPE_ROUND = 1;
 
     private Xfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
 
@@ -40,21 +33,12 @@ public class RoundImageViewByXfermode extends ImageView {
 
     public RoundImageViewByXfermode(Context context) {
         this(context, null);
-
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
     }
 
     public RoundImageViewByXfermode(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RoundImageViewByXfermode);
-        //角度默认10dp
-        mBorderRadius = a.getDimensionPixelSize(R.styleable.RoundImageViewByXfermode_borderRadius, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()));
-        type = a.getInt(R.styleable.RoundImageViewByXfermode_type, TYPE_CIRCLE); //默认圆角
-        a.recycle();
     }
 
 
@@ -90,10 +74,8 @@ public class RoundImageViewByXfermode extends ImageView {
                 //创建画布
                 Canvas drawCanvas = new Canvas(bitmap);
                 //按照bitmap的宽高，以及view的宽高，计算缩放比例；因为设置的src宽高比例可能和imageview的宽高比例不同，这里我们不希望图片失真；
-                if (type == TYPE_ROUND) {
-                    // 如果图片的宽或者高与view的宽高不匹配，计算出需要缩放的比例；缩放后的图片的宽高，一定要大于我们view的宽高；所以我们这里取大值；
-                    scale = Math.max(getWidth() * 1.0f / dWidth, getHeight() * 1.0f / dHeight);
-                }
+                // 如果图片的宽或者高与view的宽高不匹配，计算出需要缩放的比例；缩放后的图片的宽高，一定要大于我们view的宽高；所以我们这里取大值；
+                scale = Math.max(getWidth() * 1.0f / dWidth, getHeight() * 1.0f / dHeight);
 
                 //根据缩放比例，设置bounds，相当于缩放图片
                 drawable.setBounds(0, 0, (int) (scale * dWidth), (int) (scale * dHeight));
@@ -105,8 +87,6 @@ public class RoundImageViewByXfermode extends ImageView {
                 //Draw Bitmap
                 mPaint.reset();
                 mPaint.setFilterBitmap(false);
-
-
                 mPaint.setXfermode(mXfermode);  //  取两层绘制交集。显示下层。
                 //绘制圆角矩形
                 drawCanvas.drawBitmap(mMaskBitmap, 0, 0, mPaint);
@@ -131,12 +111,8 @@ public class RoundImageViewByXfermode extends ImageView {
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.BLACK);
-
-        if (type == TYPE_ROUND) {
-            canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()),
-                    mBorderRadius, mBorderRadius, paint);
-        }
-
+        canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()),
+                mBorderRadius, mBorderRadius, paint);
         return bitmap;
     }
 }

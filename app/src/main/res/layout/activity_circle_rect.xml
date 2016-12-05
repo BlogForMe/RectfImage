@@ -40,14 +40,14 @@
         android:layout_below="@id/rc"
         android:layout_marginTop="10dp">
 
-        <com.android.rectfimage.view.RoundImageViewByXfermodeNew
+      <!--  <com.android.rectfimage.view.RoundImageViewByXfermodeNew
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:src="@mipmap/aa"
             zh:borderRadius="10dp"
             zh:type="round" />
-
+-->
     </LinearLayout>
 
 
