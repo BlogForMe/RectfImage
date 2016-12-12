@@ -9,9 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.android.rectfimage.SingleActivity">
 
-    <com.android.rectfimage.view.XfermodeView
+    <!--<com.android.rectfimage.view.XfermodeView
+        android:id="@+id/xf"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />-->
 
+    <com.android.rectfimage.view.RoundCornerImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@mipmap/girl13" />
 </RelativeLayout>

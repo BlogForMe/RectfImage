@@ -2,14 +2,10 @@ package com.android.rectfimage;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -17,8 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.android.rectfimage.view.XFdrawMethod;
-import com.android.rectfimage.view.XfermodeView;
 
 import static com.android.rectfimage.Xfermodes.sModes;
 
@@ -29,9 +23,11 @@ public class SingleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_single);
+        setContentView(R.layout.activity_single);
+
+
 //        setContentView(new XfermodeView(this));
-        setContentView(new XFdrawMethod(this));
+//        setContentView(new XFdrawMethod(this));
 //        setContentView(new PaintView(this));
     }
 
