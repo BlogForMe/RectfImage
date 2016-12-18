@@ -11,7 +11,6 @@ import com.android.rectfimage.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Line_Fragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link Line_Fragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -62,7 +61,7 @@ public class Line_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_line_, container, false);
+        return inflater.inflate(R.layout.fragment_line, container, false);
     }
 
 

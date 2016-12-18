@@ -16,13 +16,7 @@
           zh:src="@mipmap/girl13"
           zh:type="circle" />
 
-      <com.android.rectfimage.view.CustomImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_toRightOf="@id/img_1"
-          zh:borderRadius="30dp"
-          zh:src="@mipmap/icon"
-          zh:type="round" />-->
+
 
     <com.android.rectfimage.view.RoundImageViewByXfermode
         android:id="@+id/rc"
@@ -40,15 +34,20 @@
         android:layout_below="@id/rc"
         android:layout_marginTop="10dp">
 
-      <!--  <com.android.rectfimage.view.RoundImageViewByXfermodeNew
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:src="@mipmap/aa"
-            zh:borderRadius="10dp"
-            zh:type="round" />
--->
+       <com.android.rectfimage.view.RoundImageViewByXfermodeNew
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp"
+              android:src="@mipmap/aa"
+              zh:borderRadius="10dp"
+              zh:type="round" />
+
     </LinearLayout>
+  -->
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

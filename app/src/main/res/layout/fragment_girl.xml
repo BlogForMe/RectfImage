@@ -15,6 +15,7 @@
         android:id="@+id/tv_translate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:padding="10dp"
         android:text="位移" />
 
@@ -22,6 +23,7 @@
         android:id="@+id/tv_circleRect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
 
         android:padding="10dp"
         android:text="圆图" />
@@ -30,6 +32,7 @@
         android:id="@+id/tv_single"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:padding="10dp"
         android:text="单独" />
 </LinearLayout>
