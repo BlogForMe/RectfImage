@@ -40,7 +40,7 @@ public class CircleRectActivity extends AppCompatActivity {
         paint.setShader(shader);
 
         Canvas canvas = new Canvas(target);
-        canvas.drawRoundRect(rectF, 40, 40, paint);
+        canvas.drawOval(rectF, paint);
         ivIMG.setImageBitmap(target);
 
     }
