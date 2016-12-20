@@ -1,5 +1,6 @@
 package com.android.rectfimage;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
@@ -9,12 +10,13 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.rectfimage.view.RoundImageViewByXfermode;
 
-public class CircleRectActivity extends AppCompatActivity {
+public class CircleRectActivity extends Activity {
 
     private LinearLayout llIv;
 
@@ -23,6 +25,8 @@ public class CircleRectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_rect);
 //        llIv = (LinearLayout) findViewById(R.id.ll_iv);
+
+//         = getLayoutInflater()
 
 //        initView();
 

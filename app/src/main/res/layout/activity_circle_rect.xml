@@ -49,5 +49,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <com.android.rectfimage.view.RoundShaderView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_img"
+        android:layout_marginTop="20dp" />
+
 
 </RelativeLayout>
