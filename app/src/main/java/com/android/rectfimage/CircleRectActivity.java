@@ -43,7 +43,6 @@ public class CircleRectActivity extends AppCompatActivity {
         Canvas canvas = new Canvas(target);
         canvas.drawOval(rectF, paint);
         ivIMG.setImageBitmap(target);
-
     }
 
 
