@@ -9,14 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <!--  <com.android.rectfimage.view.CustomImageView
-          android:id="@+id/img_1"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          zh:src="@mipmap/girl13"
-          zh:type="circle" />
-
-
+    <!--
 
     <com.android.rectfimage.view.RoundImageViewByXfermode
         android:id="@+id/rc"

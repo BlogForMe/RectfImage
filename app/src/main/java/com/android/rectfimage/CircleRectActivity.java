@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.android.rectfimage.view.RoundImageViewByXfermode;
 
 public class CircleRectActivity extends AppCompatActivity {
 
@@ -47,10 +46,5 @@ public class CircleRectActivity extends AppCompatActivity {
 
     }
 
-    private void initView() {
-        RoundImageViewByXfermode rivbx = new RoundImageViewByXfermode(this);
-        Bitmap bitMap = BitmapFactory.decodeResource(this.getResources(), R.mipmap.beaty1);
-        rivbx.setImageBitmap(bitMap);
-        llIv.addView(rivbx);
-    }
+
 }

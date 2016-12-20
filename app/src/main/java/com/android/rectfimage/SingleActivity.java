@@ -2,16 +2,20 @@ package com.android.rectfimage;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 
 import static com.android.rectfimage.Xfermodes.sModes;
@@ -24,12 +28,41 @@ public class SingleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single);
+        ImageView ivImg = (ImageView) findViewById(R.id.iv_img);
 
 
 //        setContentView(new XfermodeView(this));
 //        setContentView(new XFdrawMethod(this));
 //        setContentView(new PaintView(this));
+        ivImg.setImageBitmap(createFramedPhoto(500, 400, 20));
+
     }
+
+    private Bitmap createFramedPhoto(int x, int y, float outRadiusRat) {
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.beaty2);
+        BitmapDrawable imageDrawable = new BitmapDrawable(getResources(), bm);
+        x = bm.getWidth();
+        y = bm.getHeight();
+
+
+        //新建一个输出图片
+        Bitmap output = Bitmap.createBitmap(x, y, bm.getConfig());
+        Canvas canvas = new Canvas(output);
+        RectF rectF = new RectF(0, 0, x, y);
+
+        //新建一个圆角矩形
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.RED);
+        canvas.drawRoundRect(rectF, outRadiusRat, outRadiusRat, paint);
+        paint.setXfermode(Xfermodes.sModes[5]);
+
+        imageDrawable.setBounds(0, 0, x, y);
+        canvas.saveLayer(rectF, paint, Canvas.ALL_SAVE_FLAG);
+        imageDrawable.draw(canvas);
+        canvas.restore();
+        return output;
+    }
+
 
     private class PaintView extends View {
         int w, h;
