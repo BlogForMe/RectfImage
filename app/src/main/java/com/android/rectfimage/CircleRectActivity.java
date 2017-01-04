@@ -27,7 +27,7 @@ public class CircleRectActivity extends AppCompatActivity {
 
 //        initView();
 
-        initImg();
+//        initImg();
     }
 
     private void initImg() {

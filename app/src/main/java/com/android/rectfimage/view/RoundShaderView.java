@@ -22,16 +22,22 @@ import com.android.rectfimage.R;
  */
 public class RoundShaderView extends ImageView {
 
+
+    private Bitmap bm;
+
+    public RoundShaderView(Context context) {
+        this(context, null);
+    }
+
     public RoundShaderView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        bm = BitmapFactory.decodeResource(getResources(), R.mipmap.beaty2);
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.beaty2);
-
         BitmapShader mBitmapShader = new BitmapShader(bm, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         Bitmap targetBm = Bitmap.createBitmap(bm.getWidth(), bm.getHeight(), bm.getConfig());
         RectF rectF = new RectF(0, 0, targetBm.getWidth(), targetBm.getHeight());
@@ -40,9 +46,23 @@ public class RoundShaderView extends ImageView {
         canvas.drawRoundRect(rectF, 40, 40, paint);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
 
+    /**
+     * 加了这个就不起作用
+     *
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+        int w = bm.getWidth(),
+                h = bm.getHeight();
+        setMeasuredDimension(w, h);
     }
+
+//    @Override
+//    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+//        super.onSizeChanged(w, h, oldw, oldh);
+//    }
 }
